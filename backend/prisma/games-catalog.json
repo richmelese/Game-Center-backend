@@ -1,0 +1,1581 @@
+{
+  "source": "Ethio Telecom Games Portal registry (games/registry.json on GAMES_BASE_URL)",
+  "categories": [
+    {
+      "id": "puzzle",
+      "label": "Puzzle",
+      "color": "#7c3aed"
+    },
+    {
+      "id": "arcade",
+      "label": "Arcade",
+      "color": "#ec4899"
+    },
+    {
+      "id": "shooter",
+      "label": "Shooter",
+      "color": "#ef4444"
+    },
+    {
+      "id": "racing",
+      "label": "Racing",
+      "color": "#f59e0b"
+    },
+    {
+      "id": "sports",
+      "label": "Sports",
+      "color": "#10b981"
+    },
+    {
+      "id": "platformer",
+      "label": "Platformer",
+      "color": "#06b6d4"
+    },
+    {
+      "id": "casual",
+      "label": "Casual",
+      "color": "#f472b6"
+    },
+    {
+      "id": "board",
+      "label": "Board",
+      "color": "#64748b"
+    },
+    {
+      "id": "3d",
+      "label": "3D",
+      "color": "#8b5cf6"
+    }
+  ],
+  "games": [
+    {
+      "slug": "2048",
+      "name": "2048",
+      "category": "puzzle",
+      "path": "/games/puzzle/2048/index.html",
+      "image": "/assets/thumbnails/2048.png",
+      "description": "Slide tiles. Merge matching numbers. Reach 2048.",
+      "tags": [
+        "merge",
+        "numbers",
+        "classic"
+      ]
+    },
+    {
+      "slug": "6oct",
+      "name": "6 Octagons",
+      "category": "puzzle",
+      "path": "/games/puzzle/6oct/index.html",
+      "image": "/assets/thumbnails/6oct.png",
+      "description": "Octagon-tile sliding puzzle.",
+      "tags": [
+        "tiles",
+        "minimal"
+      ]
+    },
+    {
+      "slug": "rock-paper-scissors",
+      "name": "Rock Paper Scissors",
+      "category": "board",
+      "path": "/games/board/rock-paper-scissors/index.html",
+      "image": "/assets/thumbnails/rock-paper-scissors.png",
+      "description": "The timeless hand game vs the AI.",
+      "tags": [
+        "classic",
+        "quick"
+      ]
+    },
+    {
+      "slug": "sudoku",
+      "name": "Sudoku",
+      "category": "puzzle",
+      "path": "/games/puzzle/sudoku/index.html",
+      "image": "/assets/thumbnails/sudoku.png",
+      "description": "Classic 9x9 number logic puzzle.",
+      "tags": [
+        "logic",
+        "numbers",
+        "classic"
+      ]
+    },
+    {
+      "slug": "alien-battle",
+      "name": "Alien Battle",
+      "category": "shooter",
+      "path": "/games/shooter/alien-battle/index.html",
+      "image": "/assets/thumbnails/alien-battle.png",
+      "description": "Top-down alien shooter. Survive the swarm.",
+      "tags": [
+        "aliens",
+        "top-down",
+        "survival"
+      ]
+    },
+    {
+      "slug": "archer",
+      "name": "Archer",
+      "category": "sports",
+      "path": "/games/sports/archer/index.html",
+      "image": "/assets/thumbnails/archer.png",
+      "description": "Aim, draw, and release. Hit your target.",
+      "tags": [
+        "bow",
+        "aim",
+        "precision"
+      ]
+    },
+    {
+      "slug": "balance-stack",
+      "name": "Balance Stack",
+      "category": "arcade",
+      "path": "/games/arcade/balance-stack/index.html",
+      "image": "/assets/thumbnails/balance-stack.png",
+      "description": "Stack blocks without toppling the tower.",
+      "tags": [
+        "stacking",
+        "balance"
+      ]
+    },
+    {
+      "slug": "basketball",
+      "name": "Basketball",
+      "category": "sports",
+      "path": "/games/sports/basketball/index.html",
+      "image": "/assets/thumbnails/basketball.png",
+      "description": "Arc the ball through the hoop.",
+      "tags": [
+        "hoops",
+        "arcade-sports"
+      ]
+    },
+    {
+      "slug": "bird-shooter",
+      "name": "Bird Shooter",
+      "category": "shooter",
+      "path": "/games/shooter/bird-shooter/index.html",
+      "image": "/assets/thumbnails/bird-shooter.png",
+      "description": "Track and shoot flying birds.",
+      "tags": [
+        "aim",
+        "reflex"
+      ]
+    },
+    {
+      "slug": "bomb-blast",
+      "name": "Bomb Blast",
+      "category": "arcade",
+      "path": "/games/arcade/bomb-blast/index.html",
+      "image": "/assets/thumbnails/bomb-blast.png",
+      "description": "Time the blast to chain destruction.",
+      "tags": [
+        "explosions",
+        "timing"
+      ]
+    },
+    {
+      "slug": "boom-dots",
+      "name": "Boom Dots",
+      "category": "arcade",
+      "path": "/games/arcade/boom-dots/index.html",
+      "image": "/assets/thumbnails/boom-dots.png",
+      "description": "Tap to detonate dots and clear the screen.",
+      "tags": [
+        "chain",
+        "reflex"
+      ]
+    },
+    {
+      "slug": "bowling",
+      "name": "Bowling",
+      "category": "sports",
+      "path": "/games/sports/bowling/index.html",
+      "image": "/assets/thumbnails/bowling.png",
+      "description": "Knock down all the pins.",
+      "tags": [
+        "pins",
+        "aim",
+        "sport"
+      ]
+    },
+    {
+      "slug": "breakoid",
+      "name": "Breakoid",
+      "category": "arcade",
+      "path": "/games/arcade/breakoid/index.html",
+      "image": "/assets/thumbnails/breakoid.png",
+      "description": "Breakout-style brick smashing.",
+      "tags": [
+        "brick",
+        "paddle",
+        "classic"
+      ]
+    },
+    {
+      "slug": "bubble-pop",
+      "name": "Bubble Pop",
+      "category": "casual",
+      "path": "/games/casual/bubble-pop/index.html",
+      "image": "/assets/thumbnails/bubble-pop.png",
+      "description": "Pop matching bubbles to score.",
+      "tags": [
+        "match",
+        "bubbles",
+        "relaxing"
+      ]
+    },
+    {
+      "slug": "bubble-shooter",
+      "name": "Bubble Shooter",
+      "category": "casual",
+      "path": "/games/casual/bubble-shooter/index.html",
+      "image": "/assets/thumbnails/bubble-shooter.png",
+      "description": "Shoot bubbles into matching color clusters.",
+      "tags": [
+        "match-3",
+        "shooter",
+        "classic"
+      ]
+    },
+    {
+      "slug": "bug-smasher",
+      "name": "Bug Smasher",
+      "category": "arcade",
+      "path": "/games/arcade/bug-smasher/index.html",
+      "image": "/assets/thumbnails/bug-smasher.png",
+      "description": "Squash bugs before they reach the goal.",
+      "tags": [
+        "whack",
+        "reflex"
+      ]
+    },
+    {
+      "slug": "buttermilk",
+      "name": "Buttermilk",
+      "category": "casual",
+      "path": "/games/casual/buttermilk/index.html",
+      "image": "/assets/thumbnails/buttermilk.png",
+      "description": "Cute pour-and-mix idle game.",
+      "tags": [
+        "idle",
+        "pour",
+        "cute"
+      ]
+    },
+    {
+      "slug": "candy-crush",
+      "name": "Candy Crush",
+      "category": "casual",
+      "path": "/games/casual/candy-crush/index.html",
+      "image": "/assets/thumbnails/candy-crush.png",
+      "description": "Match-3 candy puzzle.",
+      "tags": [
+        "match-3",
+        "candy",
+        "classic"
+      ]
+    },
+    {
+      "slug": "candy-crusher",
+      "name": "Candy Crusher",
+      "category": "casual",
+      "path": "/games/casual/candy-crusher/index.html",
+      "image": "/assets/thumbnails/candy-crusher.png",
+      "description": "Smash candy patterns for points.",
+      "tags": [
+        "match",
+        "crush"
+      ]
+    },
+    {
+      "slug": "cannon-blaster",
+      "name": "Cannon Blaster",
+      "category": "shooter",
+      "path": "/games/shooter/cannon-blaster/index.html",
+      "image": "/assets/thumbnails/cannon-blaster.png",
+      "description": "Aim and fire cannonballs at targets.",
+      "tags": [
+        "cannon",
+        "physics",
+        "aim"
+      ]
+    },
+    {
+      "slug": "carrom",
+      "name": "Carrom",
+      "category": "board",
+      "path": "/games/board/carrom/index.html",
+      "image": "/assets/thumbnails/carrom.png",
+      "description": "Pocket the carrom pieces with skill.",
+      "tags": [
+        "table",
+        "aim",
+        "classic"
+      ]
+    },
+    {
+      "slug": "chess",
+      "name": "Chess",
+      "category": "board",
+      "path": "/games/board/chess/index.html",
+      "image": "/assets/thumbnails/chess.png",
+      "description": "Classic chess vs the computer.",
+      "tags": [
+        "strategy",
+        "classic"
+      ]
+    },
+    {
+      "slug": "circle-path",
+      "name": "Circle Path",
+      "category": "arcade",
+      "path": "/games/arcade/circle-path/index.html",
+      "image": "/assets/thumbnails/circle-path.png",
+      "description": "Trace the rotating circle without slipping.",
+      "tags": [
+        "timing",
+        "ring"
+      ]
+    },
+    {
+      "slug": "circuit-bulb",
+      "name": "Circuit Bulb",
+      "category": "puzzle",
+      "path": "/games/puzzle/circuit-bulb/index.html",
+      "image": "/assets/thumbnails/circuit-bulb.png",
+      "description": "Wire circuits to light the bulb.",
+      "tags": [
+        "logic",
+        "wires"
+      ]
+    },
+    {
+      "slug": "catch-me-if-you-can",
+      "name": "Catch Me If You Can",
+      "category": "arcade",
+      "path": "/games/arcade/catch-me-if-you-can/index.html",
+      "image": "/assets/thumbnails/catch-me-if-you-can.png",
+      "description": "Outrun the chasers in a wide arena.",
+      "tags": [
+        "chase",
+        "stealth"
+      ]
+    },
+    {
+      "slug": "collector",
+      "name": "Collector",
+      "category": "arcade",
+      "path": "/games/arcade/collector/index.html",
+      "image": "/assets/thumbnails/collector.png",
+      "description": "Sweep up coins before time runs out.",
+      "tags": [
+        "coins",
+        "time-attack"
+      ]
+    },
+    {
+      "slug": "color-dash",
+      "name": "Color Dash",
+      "category": "arcade",
+      "path": "/games/arcade/color-dash/index.html",
+      "image": "/assets/thumbnails/color-dash.png",
+      "description": "Match the player's color to pass each gate.",
+      "tags": [
+        "color-match",
+        "reflex"
+      ]
+    },
+    {
+      "slug": "colour-pour",
+      "name": "Colour Pour",
+      "category": "puzzle",
+      "path": "/games/puzzle/colour-pour/index.html",
+      "image": "/assets/thumbnails/colour-pour.png",
+      "description": "Sort liquids into single-color tubes.",
+      "tags": [
+        "sort",
+        "liquid",
+        "relax"
+      ]
+    },
+    {
+      "slug": "connected",
+      "name": "Connected",
+      "category": "puzzle",
+      "path": "/games/puzzle/connected/index.html",
+      "image": "/assets/thumbnails/connected.png",
+      "description": "Link nodes without crossing lines.",
+      "tags": [
+        "graph",
+        "logic"
+      ]
+    },
+    {
+      "slug": "cooking",
+      "name": "Cooking",
+      "category": "casual",
+      "path": "/games/casual/cooking/index.html",
+      "image": "/assets/thumbnails/cooking.png",
+      "description": "Plate orders before the timer hits zero.",
+      "tags": [
+        "timer",
+        "kitchen"
+      ]
+    },
+    {
+      "slug": "cool-platformer",
+      "name": "Cool Platformer",
+      "category": "platformer",
+      "path": "/games/platformer/cool-platformer/index.html",
+      "image": "/assets/thumbnails/cool-platformer.png",
+      "description": "Run, jump, and dash through hazards.",
+      "tags": [
+        "jump",
+        "run",
+        "platform"
+      ]
+    },
+    {
+      "slug": "cosmic-cleaner",
+      "name": "Cosmic Cleaner",
+      "category": "3d",
+      "path": "/games/3d/cosmic-cleaner/index.html",
+      "image": "/assets/thumbnails/cosmic-cleaner.png",
+      "description": "3D space-junk vacuum-up game.",
+      "tags": [
+        "3d",
+        "space"
+      ]
+    },
+    {
+      "slug": "crossy-road",
+      "name": "Crossy Road",
+      "category": "arcade",
+      "path": "/games/arcade/crossy-road/index.html",
+      "image": "/assets/thumbnails/crossy-road.png",
+      "description": "Hop across roads, rivers, and rails.",
+      "tags": [
+        "frogger",
+        "endless"
+      ]
+    },
+    {
+      "slug": "crowd-control",
+      "name": "Crowd Control",
+      "category": "arcade",
+      "path": "/games/arcade/crowd-control/index.html",
+      "image": "/assets/thumbnails/crowd-control.png",
+      "description": "Steer your growing crowd through obstacles.",
+      "tags": [
+        "growing",
+        "io-style"
+      ]
+    },
+    {
+      "slug": "curve-snake",
+      "name": "Curve Snake",
+      "category": "arcade",
+      "path": "/games/arcade/curve-snake/index.html",
+      "image": "/assets/thumbnails/curve-snake.png",
+      "description": "Snake-style game with smooth curve trails.",
+      "tags": [
+        "snake",
+        "trail"
+      ]
+    },
+    {
+      "slug": "cut-rope",
+      "name": "Cut the Rope",
+      "category": "puzzle",
+      "path": "/games/puzzle/cut-rope/index.html",
+      "image": "/assets/thumbnails/cut-rope.png",
+      "description": "Slice ropes to land the candy in the goal.",
+      "tags": [
+        "physics",
+        "slice"
+      ]
+    },
+    {
+      "slug": "demon",
+      "name": "Demon",
+      "category": "arcade",
+      "path": "/games/arcade/demon/index.html",
+      "image": "/assets/thumbnails/demon.png",
+      "description": "Survive a horde of demonic enemies.",
+      "tags": [
+        "survival",
+        "dark"
+      ]
+    },
+    {
+      "slug": "devil-king",
+      "name": "Devil King",
+      "category": "platformer",
+      "path": "/games/platformer/devil-king/index.html",
+      "image": "/assets/thumbnails/devil-king.png",
+      "description": "Hop hazards in a devilish trial run.",
+      "tags": [
+        "challenge",
+        "jump"
+      ]
+    },
+    {
+      "slug": "dodge-enemy",
+      "name": "Dodge Enemy",
+      "category": "arcade",
+      "path": "/games/arcade/dodge-enemy/index.html",
+      "image": "/assets/thumbnails/dodge-enemy.png",
+      "description": "Slip past charging enemies.",
+      "tags": [
+        "dodge",
+        "reflex"
+      ]
+    },
+    {
+      "slug": "dodge-master",
+      "name": "Dodge Master",
+      "category": "arcade",
+      "path": "/games/arcade/dodge-master/index.html",
+      "image": "/assets/thumbnails/dodge-master.png",
+      "description": "Endless dodging at increasing speed.",
+      "tags": [
+        "endless",
+        "dodge"
+      ]
+    },
+    {
+      "slug": "doodle-jump",
+      "name": "Doodle Jump",
+      "category": "platformer",
+      "path": "/games/platformer/doodle-jump/index.html",
+      "image": "/assets/thumbnails/doodle-jump.png",
+      "description": "Jump from platform to platform — go higher.",
+      "tags": [
+        "vertical",
+        "jump",
+        "classic"
+      ]
+    },
+    {
+      "slug": "dream-weaver",
+      "name": "Dream Weaver",
+      "category": "arcade",
+      "path": "/games/arcade/dream-weaver/index.html",
+      "image": "/assets/thumbnails/dream-weaver.png",
+      "description": "Weave glowing trails through a dreamscape.",
+      "tags": [
+        "chill",
+        "trail"
+      ]
+    },
+    {
+      "slug": "ellars",
+      "name": "Ellars",
+      "category": "arcade",
+      "path": "/games/arcade/ellars/index.html",
+      "image": "/assets/thumbnails/ellars.png",
+      "description": "Surreal arcade dodger.",
+      "tags": [
+        "abstract",
+        "dodge"
+      ]
+    },
+    {
+      "slug": "endless-mafia",
+      "name": "Endless Mafia",
+      "category": "arcade",
+      "path": "/games/arcade/endless-mafia/index.html",
+      "image": "/assets/thumbnails/endless-mafia.png",
+      "description": "Brawl through endless waves of mafia thugs.",
+      "tags": [
+        "brawler",
+        "endless"
+      ]
+    },
+    {
+      "slug": "endless-runner",
+      "name": "Endless Runner",
+      "category": "racing",
+      "path": "/games/racing/endless-runner/index.html",
+      "image": "/assets/thumbnails/endless-runner.png",
+      "description": "Run forever. Dodge everything.",
+      "tags": [
+        "runner",
+        "endless"
+      ]
+    },
+    {
+      "slug": "fighter-fury",
+      "name": "Fighter Fury",
+      "category": "shooter",
+      "path": "/games/shooter/fighter-fury/index.html",
+      "image": "/assets/thumbnails/fighter-fury.png",
+      "description": "Side-scrolling jet shooter.",
+      "tags": [
+        "jet",
+        "side-scroll"
+      ]
+    },
+    {
+      "slug": "fighter-jet",
+      "name": "Fighter Jet",
+      "category": "shooter",
+      "path": "/games/shooter/fighter-jet/index.html",
+      "image": "/assets/thumbnails/fighter-jet.png",
+      "description": "Top-down jet combat.",
+      "tags": [
+        "jet",
+        "top-down"
+      ]
+    },
+    {
+      "slug": "flappy",
+      "name": "Flappy",
+      "category": "arcade",
+      "path": "/games/arcade/flappy/index.html",
+      "image": "/assets/thumbnails/flappy.png",
+      "description": "Tap to flap. Don't hit the pipes.",
+      "tags": [
+        "tap",
+        "one-button",
+        "classic"
+      ]
+    },
+    {
+      "slug": "flip-jump",
+      "name": "Flip Jump",
+      "category": "platformer",
+      "path": "/games/platformer/flip-jump/index.html",
+      "image": "/assets/thumbnails/flip-jump.png",
+      "description": "Flip the world to land safely.",
+      "tags": [
+        "gravity",
+        "flip"
+      ]
+    },
+    {
+      "slug": "fly-monkey",
+      "name": "Fly Monkey",
+      "category": "arcade",
+      "path": "/games/arcade/fly-monkey/index.html",
+      "image": "/assets/thumbnails/fly-monkey.png",
+      "description": "Swing the monkey through the canopy.",
+      "tags": [
+        "swing",
+        "jungle"
+      ]
+    },
+    {
+      "slug": "football",
+      "name": "Football",
+      "category": "sports",
+      "path": "/games/sports/football/index.html",
+      "image": "/assets/thumbnails/football.png",
+      "description": "Score goals in a fast-paced footy match.",
+      "tags": [
+        "soccer",
+        "goals"
+      ]
+    },
+    {
+      "slug": "forest-runner",
+      "name": "Forest Runner",
+      "category": "racing",
+      "path": "/games/racing/forest-runner/index.html",
+      "image": "/assets/thumbnails/forest-runner.png",
+      "description": "Sprint through a forest — dodge logs and gaps.",
+      "tags": [
+        "runner",
+        "forest"
+      ]
+    },
+    {
+      "slug": "four-dots",
+      "name": "Four Dots",
+      "category": "puzzle",
+      "path": "/games/puzzle/four-dots/index.html",
+      "image": "/assets/thumbnails/four-dots.png",
+      "description": "Tap dots in the right pattern.",
+      "tags": [
+        "pattern",
+        "tap"
+      ]
+    },
+    {
+      "slug": "fruit-basket",
+      "name": "Fruit Basket",
+      "category": "casual",
+      "path": "/games/casual/fruit-basket/index.html",
+      "image": "/assets/thumbnails/fruit-basket.png",
+      "description": "Catch falling fruits in your basket.",
+      "tags": [
+        "catch",
+        "fruits",
+        "cute"
+      ]
+    },
+    {
+      "slug": "fruit-cosmics",
+      "name": "Fruit Cosmics",
+      "category": "casual",
+      "path": "/games/casual/fruit-cosmics/index.html",
+      "image": "/assets/thumbnails/fruit-cosmics.png",
+      "description": "Cosmic-themed fruit smasher.",
+      "tags": [
+        "fruits",
+        "slash"
+      ]
+    },
+    {
+      "slug": "fruit-merge",
+      "name": "Fruit Merge",
+      "category": "casual",
+      "path": "/games/casual/fruit-merge/index.html",
+      "image": "/assets/thumbnails/fruit-merge.png",
+      "description": "Drop fruits — merge same kinds to evolve.",
+      "tags": [
+        "merge",
+        "suika",
+        "drop"
+      ]
+    },
+    {
+      "slug": "luma-bounce",
+      "name": "LumaBounce",
+      "category": "arcade",
+      "path": "/games/arcade/luma-bounce/index.html",
+      "image": "/assets/thumbnails/luma-bounce.png",
+      "description": "Bouncy reflex arcade game.",
+      "tags": [
+        "bounce",
+        "reflex"
+      ]
+    },
+    {
+      "slug": "glass-step",
+      "name": "Glass Step",
+      "category": "arcade",
+      "path": "/games/arcade/glass-step/index.html",
+      "image": "/assets/thumbnails/glass-step.png",
+      "description": "Pick the safe glass tile. Don't fall.",
+      "tags": [
+        "squid-game",
+        "pick"
+      ]
+    },
+    {
+      "slug": "gunman",
+      "name": "Gunman",
+      "category": "shooter",
+      "path": "/games/shooter/gunman/index.html",
+      "image": "/assets/thumbnails/gunman.png",
+      "description": "Quick-draw gunfight game.",
+      "tags": [
+        "western",
+        "quickdraw"
+      ]
+    },
+    {
+      "slug": "gun-run",
+      "name": "Gun Run",
+      "category": "shooter",
+      "path": "/games/shooter/gun-run/index.html",
+      "image": "/assets/thumbnails/gun-run.png",
+      "description": "Run-and-gun side-scroller.",
+      "tags": [
+        "run-gun",
+        "side-scroll"
+      ]
+    },
+    {
+      "slug": "hex-puzzle",
+      "name": "Hex Puzzle",
+      "category": "puzzle",
+      "path": "/games/puzzle/hex-puzzle/index.html",
+      "image": "/assets/thumbnails/hex-puzzle.png",
+      "description": "Place hex blocks to clear the board.",
+      "tags": [
+        "hex",
+        "blocks"
+      ]
+    },
+    {
+      "slug": "hungry-player",
+      "name": "Hungry Player",
+      "category": "arcade",
+      "path": "/games/arcade/hungry-player/index.html",
+      "image": "/assets/thumbnails/hungry-player.png",
+      "description": "Gobble food, dodge hazards, grow.",
+      "tags": [
+        "eat",
+        "grow"
+      ]
+    },
+    {
+      "slug": "jump-dot",
+      "name": "Jump Dot",
+      "category": "arcade",
+      "path": "/games/arcade/jump-dot/index.html",
+      "image": "/assets/thumbnails/jump-dot.png",
+      "description": "Tap to jump the dot over rotating hazards.",
+      "tags": [
+        "one-button",
+        "timing"
+      ]
+    },
+    {
+      "slug": "kaiju-krush",
+      "name": "Kaiju Krush",
+      "category": "arcade",
+      "path": "/games/arcade/kaiju-krush/index.html",
+      "image": "/assets/thumbnails/kaiju-krush.png",
+      "description": "Smash through the city as a giant kaiju.",
+      "tags": [
+        "destruction",
+        "kaiju"
+      ]
+    },
+    {
+      "slug": "laser-bounce",
+      "name": "Laser Bounce",
+      "category": "puzzle",
+      "path": "/games/puzzle/laser-bounce/index.html",
+      "image": "/assets/thumbnails/laser-bounce.png",
+      "description": "Reflect lasers to hit all targets.",
+      "tags": [
+        "lasers",
+        "reflect",
+        "logic"
+      ]
+    },
+    {
+      "slug": "link",
+      "name": "Link",
+      "category": "puzzle",
+      "path": "/games/puzzle/link/index.html",
+      "image": "/assets/thumbnails/link.png",
+      "description": "Link matching tiles by shortest path.",
+      "tags": [
+        "match",
+        "mahjong"
+      ]
+    },
+    {
+      "slug": "ludo",
+      "name": "Ludo",
+      "category": "board",
+      "path": "/games/board/ludo/index.html",
+      "image": "/assets/thumbnails/ludo.png",
+      "description": "Classic Ludo — you vs 3 AI opponents.",
+      "tags": [
+        "dice",
+        "classic",
+        "family"
+      ]
+    },
+    {
+      "slug": "mario",
+      "name": "Mario-Like",
+      "category": "platformer",
+      "path": "/games/platformer/mario/index.html",
+      "image": "/assets/thumbnails/mario.png",
+      "description": "Side-scrolling platformer adventure.",
+      "tags": [
+        "platformer",
+        "retro"
+      ]
+    },
+    {
+      "slug": "memory",
+      "name": "Memory",
+      "category": "puzzle",
+      "path": "/games/puzzle/memory/index.html",
+      "image": "/assets/thumbnails/memory.png",
+      "description": "Flip cards. Find pairs.",
+      "tags": [
+        "memory",
+        "cards",
+        "classic"
+      ]
+    },
+    {
+      "slug": "memory-cards",
+      "name": "Memory Cards",
+      "category": "puzzle",
+      "path": "/games/puzzle/memory-cards/index.html",
+      "image": "/assets/thumbnails/memory-cards.png",
+      "description": "Card-matching memory test.",
+      "tags": [
+        "memory",
+        "cards"
+      ]
+    },
+    {
+      "slug": "number-merge",
+      "name": "Number Merge",
+      "category": "puzzle",
+      "path": "/games/puzzle/number-merge/index.html",
+      "image": "/assets/thumbnails/number-merge.png",
+      "description": "Merge same numbers, climb the score.",
+      "tags": [
+        "merge",
+        "numbers"
+      ]
+    },
+    {
+      "slug": "one-car",
+      "name": "One Car",
+      "category": "racing",
+      "path": "/games/racing/one-car/index.html",
+      "image": "/assets/thumbnails/one-car.png",
+      "description": "Steer one car through dense traffic.",
+      "tags": [
+        "traffic",
+        "reflex"
+      ]
+    },
+    {
+      "slug": "orbital-outpost",
+      "name": "Orbital Outpost",
+      "category": "3d",
+      "path": "/games/3d/orbital-outpost/index.html",
+      "image": "/assets/thumbnails/orbital-outpost.png",
+      "description": "3D space-station defense.",
+      "tags": [
+        "3d",
+        "space",
+        "defense"
+      ]
+    },
+    {
+      "slug": "pacman",
+      "name": "Pac-Man",
+      "category": "arcade",
+      "path": "/games/arcade/pacman/index.html",
+      "image": "/assets/thumbnails/pacman.png",
+      "description": "Eat dots. Avoid ghosts.",
+      "tags": [
+        "maze",
+        "classic"
+      ]
+    },
+    {
+      "slug": "pairing",
+      "name": "Pairing",
+      "category": "puzzle",
+      "path": "/games/puzzle/pairing/index.html",
+      "image": "/assets/thumbnails/pairing.png",
+      "description": "Pair up matching items quickly.",
+      "tags": [
+        "match",
+        "quick"
+      ]
+    },
+    {
+      "slug": "parkour",
+      "name": "Parkour",
+      "category": "platformer",
+      "path": "/games/platformer/parkour/index.html",
+      "image": "/assets/thumbnails/parkour.png",
+      "description": "Wall-run, slide, and vault forward.",
+      "tags": [
+        "parkour",
+        "run"
+      ]
+    },
+    {
+      "slug": "pathfinder",
+      "name": "Pathfinder",
+      "category": "puzzle",
+      "path": "/games/puzzle/pathfinder/index.html",
+      "image": "/assets/thumbnails/pathfinder.png",
+      "description": "Solve maze paths under time pressure.",
+      "tags": [
+        "maze",
+        "path"
+      ]
+    },
+    {
+      "slug": "perfect-square",
+      "name": "Perfect Square",
+      "category": "puzzle",
+      "path": "/games/puzzle/perfect-square/index.html",
+      "image": "/assets/thumbnails/perfect-square.png",
+      "description": "Tap when the square aligns perfectly.",
+      "tags": [
+        "timing",
+        "precision"
+      ]
+    },
+    {
+      "slug": "pirates",
+      "name": "Pirates",
+      "category": "arcade",
+      "path": "/games/arcade/pirates/index.html",
+      "image": "/assets/thumbnails/pirates.png",
+      "description": "Sail and battle on the high seas.",
+      "tags": [
+        "pirates",
+        "ships"
+      ]
+    },
+    {
+      "slug": "planet-visitor",
+      "name": "Planet Visitor",
+      "category": "3d",
+      "path": "/games/3d/planet-visitor/index.html",
+      "image": "/assets/thumbnails/planet-visitor.png",
+      "description": "Land on alien planets in 3D.",
+      "tags": [
+        "3d",
+        "space",
+        "explore"
+      ]
+    },
+    {
+      "slug": "planet-war",
+      "name": "Planet War",
+      "category": "3d",
+      "path": "/games/3d/planet-war/index.html",
+      "image": "/assets/thumbnails/planet-war.png",
+      "description": "Defend your planet from cosmic invaders.",
+      "tags": [
+        "3d",
+        "space",
+        "defense"
+      ]
+    },
+    {
+      "slug": "projectile-enemy",
+      "name": "Projectile Enemy",
+      "category": "shooter",
+      "path": "/games/shooter/projectile-enemy/index.html",
+      "image": "/assets/thumbnails/projectile-enemy.png",
+      "description": "Dodge and counter ranged enemies.",
+      "tags": [
+        "bullet-hell",
+        "reflex"
+      ]
+    },
+    {
+      "slug": "red-light-green-light",
+      "name": "Red Light, Green Light",
+      "category": "arcade",
+      "path": "/games/arcade/red-light-green-light/index.html",
+      "image": "/assets/thumbnails/red-light-green-light.png",
+      "description": "Move on green. Freeze on red.",
+      "tags": [
+        "squid-game",
+        "reflex"
+      ]
+    },
+    {
+      "slug": "road-cross",
+      "name": "Road Cross",
+      "category": "arcade",
+      "path": "/games/arcade/road-cross/index.html",
+      "image": "/assets/thumbnails/road-cross.png",
+      "description": "Cross busy roads safely.",
+      "tags": [
+        "frogger",
+        "timing"
+      ]
+    },
+    {
+      "slug": "road-fighter",
+      "name": "Road Fighter",
+      "category": "racing",
+      "path": "/games/racing/road-fighter/index.html",
+      "image": "/assets/thumbnails/road-fighter.png",
+      "description": "Top-down race weaving through traffic.",
+      "tags": [
+        "traffic",
+        "race",
+        "retro"
+      ]
+    },
+    {
+      "slug": "robot-destruction",
+      "name": "Robot Destruction",
+      "category": "shooter",
+      "path": "/games/shooter/robot-destruction/index.html",
+      "image": "/assets/thumbnails/robot-destruction.png",
+      "description": "Blast incoming robots to scrap.",
+      "tags": [
+        "robots",
+        "blaster"
+      ]
+    },
+    {
+      "slug": "screw-master",
+      "name": "Screw Master",
+      "category": "puzzle",
+      "path": "/games/puzzle/screw-master/index.html",
+      "image": "/assets/thumbnails/screw-master.png",
+      "description": "Unscrew and sort the metal pieces.",
+      "tags": [
+        "sort",
+        "mechanical"
+      ]
+    },
+    {
+      "slug": "shadow-runner",
+      "name": "Shadow Runner",
+      "category": "racing",
+      "path": "/games/racing/shadow-runner/index.html",
+      "image": "/assets/thumbnails/shadow-runner.png",
+      "description": "Sprint through a shadow world.",
+      "tags": [
+        "runner",
+        "dark"
+      ]
+    },
+    {
+      "slug": "shadow-shooter",
+      "name": "Shadow Shooter",
+      "category": "shooter",
+      "path": "/games/shooter/shadow-shooter/index.html",
+      "image": "/assets/thumbnails/shadow-shooter.png",
+      "description": "Pick off shadow enemies from cover.",
+      "tags": [
+        "stealth",
+        "shooter"
+      ]
+    },
+    {
+      "slug": "shape-collector",
+      "name": "Shape Collector",
+      "category": "arcade",
+      "path": "/games/arcade/shape-collector/index.html",
+      "image": "/assets/thumbnails/shape-collector.png",
+      "description": "Catch only the matching shapes.",
+      "tags": [
+        "shapes",
+        "match"
+      ]
+    },
+    {
+      "slug": "shoot-enemy",
+      "name": "Shoot Enemy",
+      "category": "shooter",
+      "path": "/games/shooter/shoot-enemy/index.html",
+      "image": "/assets/thumbnails/shoot-enemy.png",
+      "description": "Pick off enemies before they reach you.",
+      "tags": [
+        "aim",
+        "reflex"
+      ]
+    },
+    {
+      "slug": "shooter",
+      "name": "Shooter",
+      "category": "shooter",
+      "path": "/games/shooter/shooter/index.html",
+      "image": "/assets/thumbnails/shooter.png",
+      "description": "Top-down arena shooter.",
+      "tags": [
+        "arena",
+        "top-down"
+      ]
+    },
+    {
+      "slug": "signal-circuit",
+      "name": "Signal Circuit",
+      "category": "puzzle",
+      "path": "/games/puzzle/signal-circuit/index.html",
+      "image": "/assets/thumbnails/signal-circuit.png",
+      "description": "Route signals through circuit gates.",
+      "tags": [
+        "logic",
+        "circuit"
+      ]
+    },
+    {
+      "slug": "sky-high",
+      "name": "Sky High",
+      "category": "arcade",
+      "path": "/games/arcade/sky-high/index.html",
+      "image": "/assets/thumbnails/sky-high.png",
+      "description": "Climb endlessly into the sky.",
+      "tags": [
+        "climb",
+        "endless"
+      ]
+    },
+    {
+      "slug": "slide-puzzle",
+      "name": "Slide Puzzle",
+      "category": "puzzle",
+      "path": "/games/puzzle/slide-puzzle/index.html",
+      "image": "/assets/thumbnails/slide-puzzle.png",
+      "description": "Reassemble the image by sliding tiles.",
+      "tags": [
+        "sliding",
+        "classic"
+      ]
+    },
+    {
+      "slug": "snake-and-ladder",
+      "name": "Snake & Ladder",
+      "category": "board",
+      "path": "/games/board/snake-and-ladder/index.html",
+      "image": "/assets/thumbnails/snake-and-ladder.png",
+      "description": "Roll the dice. Climb. Slide. Win.",
+      "tags": [
+        "dice",
+        "family",
+        "classic"
+      ]
+    },
+    {
+      "slug": "sniper",
+      "name": "Sniper",
+      "category": "shooter",
+      "path": "/games/shooter/sniper/index.html",
+      "image": "/assets/thumbnails/sniper.png",
+      "description": "Steady your scope. One shot, one kill.",
+      "tags": [
+        "scope",
+        "precision"
+      ]
+    },
+    {
+      "slug": "space-fighter",
+      "name": "Space Fighter",
+      "category": "shooter",
+      "path": "/games/shooter/space-fighter/index.html",
+      "image": "/assets/thumbnails/space-fighter.png",
+      "description": "Dogfight through asteroid fields.",
+      "tags": [
+        "space",
+        "dogfight"
+      ]
+    },
+    {
+      "slug": "spaceman",
+      "name": "Spaceman",
+      "category": "arcade",
+      "path": "/games/arcade/spaceman/index.html",
+      "image": "/assets/thumbnails/spaceman.png",
+      "description": "Float and survive in zero gravity.",
+      "tags": [
+        "space",
+        "float"
+      ]
+    },
+    {
+      "slug": "space-waves",
+      "name": "Space Waves",
+      "category": "arcade",
+      "path": "/games/arcade/space-waves/index.html",
+      "image": "/assets/thumbnails/space-waves.png",
+      "description": "Surf waves of space debris.",
+      "tags": [
+        "space",
+        "wave"
+      ]
+    },
+    {
+      "slug": "square-one",
+      "name": "Square One",
+      "category": "puzzle",
+      "path": "/games/puzzle/square-one/index.html",
+      "image": "/assets/thumbnails/square-one.png",
+      "description": "Slide squares to clear the board.",
+      "tags": [
+        "sliding",
+        "minimal"
+      ]
+    },
+    {
+      "slug": "stack-tower",
+      "name": "Stack Tower",
+      "category": "3d",
+      "path": "/games/3d/stack-tower/index.html",
+      "image": "/assets/thumbnails/stack-tower.png",
+      "description": "Stack 3D blocks for the highest tower.",
+      "tags": [
+        "3d",
+        "stack",
+        "timing"
+      ]
+    },
+    {
+      "slug": "stick-game",
+      "name": "Stick Game",
+      "category": "arcade",
+      "path": "/games/arcade/stick-game/index.html",
+      "image": "/assets/thumbnails/stick-game.png",
+      "description": "Draw sticks to bridge gaps.",
+      "tags": [
+        "stick",
+        "draw"
+      ]
+    },
+    {
+      "slug": "straight-rush",
+      "name": "Straight Rush",
+      "category": "racing",
+      "path": "/games/racing/straight-rush/index.html",
+      "image": "/assets/thumbnails/straight-rush.png",
+      "description": "Sprint forward — react to oncoming hazards.",
+      "tags": [
+        "sprint",
+        "reflex"
+      ]
+    },
+    {
+      "slug": "survival-run",
+      "name": "Survival Run",
+      "category": "racing",
+      "path": "/games/racing/survival-run/index.html",
+      "image": "/assets/thumbnails/survival-run.png",
+      "description": "Outrun the danger as long as you can.",
+      "tags": [
+        "survival",
+        "runner"
+      ]
+    },
+    {
+      "slug": "survivor",
+      "name": "Survivor",
+      "category": "shooter",
+      "path": "/games/shooter/survivor/index.html",
+      "image": "/assets/thumbnails/survivor.png",
+      "description": "Vampire-survivors-style horde survival.",
+      "tags": [
+        "horde",
+        "survival",
+        "auto"
+      ]
+    },
+    {
+      "slug": "table-tennis",
+      "name": "Table Tennis",
+      "category": "sports",
+      "path": "/games/sports/table-tennis/index.html",
+      "image": "/assets/thumbnails/table-tennis.png",
+      "description": "Volley the ping-pong ball.",
+      "tags": [
+        "pong",
+        "sport"
+      ]
+    },
+    {
+      "slug": "tee-shooter",
+      "name": "Tee Shooter",
+      "category": "shooter",
+      "path": "/games/shooter/tee-shooter/index.html",
+      "image": "/assets/thumbnails/tee-shooter.png",
+      "description": "Tee-up trick-shot shooter.",
+      "tags": [
+        "aim",
+        "tee"
+      ]
+    },
+    {
+      "slug": "tetris",
+      "name": "Tetris",
+      "category": "puzzle",
+      "path": "/games/puzzle/tetris/index.html",
+      "image": "/assets/thumbnails/tetris.png",
+      "description": "The classic falling-block puzzle.",
+      "tags": [
+        "blocks",
+        "classic"
+      ]
+    },
+    {
+      "slug": "that-level-again-1",
+      "name": "That Level Again — 1",
+      "category": "platformer",
+      "path": "/games/platformer/that-level-again-1/index.html",
+      "image": "/assets/thumbnails/that-level-again-1.png",
+      "description": "Trick-platformer level 1.",
+      "tags": [
+        "trick",
+        "platformer"
+      ]
+    },
+    {
+      "slug": "that-level-again-2",
+      "name": "That Level Again — 2",
+      "category": "platformer",
+      "path": "/games/platformer/that-level-again-2/index.html",
+      "image": "/assets/thumbnails/that-level-again-2.png",
+      "description": "Trick-platformer level 2.",
+      "tags": [
+        "trick",
+        "platformer"
+      ]
+    },
+    {
+      "slug": "that-level-again-3",
+      "name": "That Level Again — 3",
+      "category": "platformer",
+      "path": "/games/platformer/that-level-again-3/index.html",
+      "image": "/assets/thumbnails/that-level-again-3.png",
+      "description": "Trick-platformer level 3.",
+      "tags": [
+        "trick",
+        "platformer"
+      ]
+    },
+    {
+      "slug": "that-level-again-4",
+      "name": "That Level Again — 4",
+      "category": "platformer",
+      "path": "/games/platformer/that-level-again-4/index.html",
+      "image": "/assets/thumbnails/that-level-again-4.png",
+      "description": "Trick-platformer level 4.",
+      "tags": [
+        "trick",
+        "platformer"
+      ]
+    },
+    {
+      "slug": "that-level-again-5",
+      "name": "That Level Again — 5",
+      "category": "platformer",
+      "path": "/games/platformer/that-level-again-5/index.html",
+      "image": "/assets/thumbnails/that-level-again-5.png",
+      "description": "Trick-platformer level 5.",
+      "tags": [
+        "trick",
+        "platformer"
+      ]
+    },
+    {
+      "slug": "thunder-god",
+      "name": "Thunder God",
+      "category": "shooter",
+      "path": "/games/shooter/thunder-god/index.html",
+      "image": "/assets/thumbnails/thunder-god.png",
+      "description": "Smite enemies with lightning.",
+      "tags": [
+        "thunder",
+        "power"
+      ]
+    },
+    {
+      "slug": "tic-tac-toe",
+      "name": "Tic-Tac-Toe",
+      "category": "board",
+      "path": "/games/board/tic-tac-toe/index.html",
+      "image": "/assets/thumbnails/tic-tac-toe.png",
+      "description": "X's and O's. Three in a row wins.",
+      "tags": [
+        "classic",
+        "quick"
+      ]
+    },
+    {
+      "slug": "tile-tap",
+      "name": "Tile Tap",
+      "category": "puzzle",
+      "path": "/games/puzzle/tile-tap/index.html",
+      "image": "/assets/thumbnails/tile-tap.png",
+      "description": "Tap only the dark tiles. Don't miss.",
+      "tags": [
+        "tap",
+        "tile",
+        "classic"
+      ]
+    },
+    {
+      "slug": "tower-shooter",
+      "name": "Tower Shooter",
+      "category": "shooter",
+      "path": "/games/shooter/tower-shooter/index.html",
+      "image": "/assets/thumbnails/tower-shooter.png",
+      "description": "Defend your tower from waves of enemies.",
+      "tags": [
+        "defense",
+        "tower"
+      ]
+    },
+    {
+      "slug": "trench-defence",
+      "name": "Trench Defence",
+      "category": "shooter",
+      "path": "/games/shooter/trench-defence/index.html",
+      "image": "/assets/thumbnails/trench-defence.png",
+      "description": "Hold the trench against the assault.",
+      "tags": [
+        "defense",
+        "war"
+      ]
+    },
+    {
+      "slug": "two-cars",
+      "name": "Two Cars",
+      "category": "racing",
+      "path": "/games/racing/two-cars/index.html",
+      "image": "/assets/thumbnails/two-cars.png",
+      "description": "Steer two cars at once. Catch & dodge.",
+      "tags": [
+        "dual",
+        "reflex"
+      ]
+    },
+    {
+      "slug": "two-cars-ai",
+      "name": "Two Cars AI",
+      "category": "racing",
+      "path": "/games/racing/two-cars-ai/index.html",
+      "image": "/assets/thumbnails/two-cars-ai.png",
+      "description": "AI-twist on the two-cars classic.",
+      "tags": [
+        "dual",
+        "ai"
+      ]
+    },
+    {
+      "slug": "unruly",
+      "name": "Unruly",
+      "category": "puzzle",
+      "path": "/games/puzzle/unruly/index.html",
+      "image": "/assets/thumbnails/unruly.png",
+      "description": "Place tiles by no-three-in-a-row rules.",
+      "tags": [
+        "logic",
+        "binary"
+      ]
+    },
+    {
+      "slug": "vaccine-shooter",
+      "name": "Vaccine Shooter",
+      "category": "shooter",
+      "path": "/games/shooter/vaccine-shooter/index.html",
+      "image": "/assets/thumbnails/vaccine-shooter.png",
+      "description": "Shoot viruses with your vaccine gun.",
+      "tags": [
+        "health",
+        "shooter"
+      ]
+    },
+    {
+      "slug": "whack-a-bug",
+      "name": "Whack-a-Bug",
+      "category": "arcade",
+      "path": "/games/arcade/whack-a-bug/index.html",
+      "image": "/assets/thumbnails/whack-a-bug.png",
+      "description": "Bonk the bugs as they pop up.",
+      "tags": [
+        "whack",
+        "reflex"
+      ]
+    },
+    {
+      "slug": "swipe-assassin",
+      "name": "Swipe Assassin",
+      "category": "arcade",
+      "path": "/games/arcade/swipe-assassin/index.html",
+      "image": "/assets/thumbnails/swipe-assassin.png",
+      "description": "Swipe to slice incoming threats.",
+      "tags": [
+        "swipe",
+        "slash"
+      ]
+    }
+  ]
+}

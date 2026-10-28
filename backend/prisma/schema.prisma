@@ -1,0 +1,303 @@
+// teleGame — telebirr SuperApp Game Center (LEMAT TECHNOLOGY PLC)
+// Data model follows the proposal's Customer Journey (section 2.2):
+//   1-2 Game / Plan          -> customer opens Game Center, discovers & selects a game
+//   3-4 Order                -> purchase/subscription flow, paid through telebirr
+//   5   Entitlement          -> successful transaction grants game access
+//   6-7 PlaySession / Coins  -> customer launches & plays, accumulates coins
+//   8   Redemption           -> customer converts coins into ETB / e-money
+// All money is stored in santim (1 ETB = 100 santim) to avoid rounding errors.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum PlanType {
+  DAILY
+  WEEKLY
+  MONTHLY
+  PAY_PER_USE
+}
+
+enum OrderStatus {
+  PENDING
+  PAID
+  FAILED
+  CANCELLED
+}
+
+enum PlayMode {
+  DEMO
+  FULL
+}
+
+/// How a game pays coins (journey step 7).
+/// TIME  = server-measured active play time (default; works with any game)
+/// SCORE = results reported server-to-server by the game supplier, HMAC-signed
+enum CoinMode {
+  TIME
+  SCORE
+}
+
+enum CoinTxType {
+  EARN
+  REDEEM
+  REFUND
+}
+
+enum RedemptionStatus {
+  PENDING
+  PAID
+  REJECTED
+}
+
+enum TicketStatus {
+  OPEN
+  IN_PROGRESS
+  RESOLVED
+}
+
+model User {
+  id             String   @id @default(cuid())
+  phone          String?  @unique // normalized MSISDN, e.g. 2519XXXXXXXX
+  telebirrOpenId String?  @unique
+  name           String?
+  email          String?  @unique // admins only
+  passwordHash   String? // admins only
+  role           Role     @default(USER)
+  coinBalance    Int      @default(0)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  orders       Order[]
+  entitlements Entitlement[]
+  sessions     PlaySession[]
+  coinTxs      CoinTransaction[]
+  redemptions  Redemption[]
+  tickets      SupportTicket[]
+}
+
+model OtpCode {
+  id         String    @id @default(cuid())
+  phone      String
+  codeHash   String
+  attempts   Int       @default(0)
+  expiresAt  DateTime
+  consumedAt DateTime?
+  createdAt  DateTime  @default(now())
+
+  @@index([phone, createdAt])
+}
+
+model Game {
+  id             String   @id @default(cuid())
+  slug           String   @unique
+  title          String
+  category       String
+  description    String
+  targetAudience String
+  /// full https URL, or a path ("/games/...") resolved against GAMES_BASE_URL
+  gameUrl        String
+  /// cover picture: full URL, or a path resolved against GAMES_BASE_URL; null = built-in art
+  imageUrl       String?
+  themeColor     String   @default("#1d4ed8")
+  isActive       Boolean  @default(true)
+  sortOrder      Int      @default(0)
+  coinMode       CoinMode @default(TIME)
+  pointsPerCoin  Int      @default(100) // SCORE mode: reported points needed for 1 coin
+  resultSecret   String? // SCORE mode: HMAC key shared with the game supplier (never returned by the API)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  plans        Plan[]
+  orders       Order[]
+  entitlements Entitlement[]
+  sessions     PlaySession[]
+  results      GameResult[]
+}
+
+model Plan {
+  id            String   @id @default(cuid())
+  gameId        String
+  type          PlanType
+  priceCents    Int
+  durationHours Int? // DAILY 24, WEEKLY 168, MONTHLY 720; null for PAY_PER_USE
+  plays         Int? // PAY_PER_USE: number of plays granted
+  isActive      Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  game   Game    @relation(fields: [gameId], references: [id], onDelete: Cascade)
+  orders Order[]
+
+  @@unique([gameId, type])
+}
+
+model Order {
+  id                 String      @id @default(cuid())
+  merchOrderId       String      @unique // id sent to telebirr (alphanumeric)
+  userId             String
+  gameId             String
+  planId             String
+  planType           PlanType
+  amountCents        Int
+  status             OrderStatus @default(PENDING)
+  provider           String
+  prepayId           String?
+  checkoutUrl        String?
+  providerTxnId      String?
+  // revenue split snapshot (section 3.2), filled when the order is paid
+  vatCents           Int         @default(0)
+  otherTaxCents      Int         @default(0)
+  netCents           Int         @default(0)
+  partnerShareCents  Int         @default(0) // LEMAT TECHNOLOGY PLC
+  operatorShareCents Int         @default(0) // Ethio Telecom
+  paidAt             DateTime?
+  rawNotification    Json?
+  createdAt          DateTime    @default(now())
+  updatedAt          DateTime    @updatedAt
+
+  user        User         @relation(fields: [userId], references: [id])
+  game        Game         @relation(fields: [gameId], references: [id])
+  plan        Plan         @relation(fields: [planId], references: [id])
+  entitlement Entitlement?
+
+  @@index([status, paidAt])
+  @@index([userId, createdAt])
+}
+
+model Entitlement {
+  id             String    @id @default(cuid())
+  userId         String
+  gameId         String
+  orderId        String    @unique
+  type           PlanType
+  startsAt       DateTime
+  expiresAt      DateTime? // subscriptions
+  playsRemaining Int? // pay-per-use
+  createdAt      DateTime  @default(now())
+
+  user     User          @relation(fields: [userId], references: [id])
+  game     Game          @relation(fields: [gameId], references: [id])
+  order    Order         @relation(fields: [orderId], references: [id])
+  sessions PlaySession[]
+
+  @@index([userId, gameId, expiresAt])
+}
+
+model PlaySession {
+  id              String    @id @default(cuid())
+  userId          String
+  gameId          String
+  entitlementId   String?
+  mode            PlayMode
+  coinMode        CoinMode  @default(TIME) // snapshot at start, so changing a game's mode never double-pays a session
+  startedAt       DateTime  @default(now())
+  lastHeartbeatAt DateTime  @default(now())
+  activeSeconds   Int       @default(0)
+  endedAt         DateTime?
+  score           Int?
+  coinsEarned     Int       @default(0)
+
+  user        User              @relation(fields: [userId], references: [id])
+  game        Game              @relation(fields: [gameId], references: [id])
+  entitlement Entitlement?      @relation(fields: [entitlementId], references: [id])
+  coinTxs     CoinTransaction[]
+  results     GameResult[]
+
+  @@index([userId, gameId, mode, startedAt])
+}
+
+/// One result reported by the game supplier's server for a play session (SCORE mode).
+model GameResult {
+  id           String   @id @default(cuid())
+  gameId       String
+  sessionId    String
+  userId       String
+  resultId     String // supplier's unique id for this result (idempotency key)
+  score        Int
+  level        Int?
+  won          Boolean?
+  coinsAwarded Int      @default(0)
+  createdAt    DateTime @default(now())
+
+  game    Game        @relation(fields: [gameId], references: [id])
+  session PlaySession @relation(fields: [sessionId], references: [id])
+
+  @@unique([gameId, resultId])
+  @@index([sessionId])
+}
+
+model CoinTransaction {
+  id           String     @id @default(cuid())
+  userId       String
+  type         CoinTxType
+  amount       Int // signed: + earn/refund, - redeem
+  balanceAfter Int
+  sessionId    String?
+  redemptionId String?
+  note         String?
+  createdAt    DateTime   @default(now())
+
+  user       User         @relation(fields: [userId], references: [id])
+  session    PlaySession? @relation(fields: [sessionId], references: [id])
+  redemption Redemption?  @relation(fields: [redemptionId], references: [id])
+
+  @@index([userId, createdAt])
+}
+
+model Redemption {
+  id          String           @id @default(cuid())
+  userId      String
+  coins       Int
+  amountCents Int
+  msisdn      String // telebirr wallet receiving the e-money
+  status      RedemptionStatus @default(PENDING)
+  payoutRef   String?
+  note        String?
+  processedAt DateTime?
+  createdAt   DateTime         @default(now())
+
+  user    User              @relation(fields: [userId], references: [id])
+  coinTxs CoinTransaction[]
+
+  @@index([status, createdAt])
+}
+
+/// Coin rules editable by admins (single row, id = 1).
+/// Created from the .env values on first use; after that the admin settings are used.
+model CoinSettings {
+  id               Int      @id @default(1)
+  coinsPerInterval Int // TIME mode: coins paid for every completed interval of play...
+  intervalMinutes  Int //  ...of this many minutes (e.g. 5 coins every 2 minutes)
+  maxPerSession    Int
+  maxPerDay        Int
+  coinsPerEtb      Int // conversion rate: this many coins = 1 ETB
+  minRedeem        Int // minimum coins per conversion
+  updatedById      String?
+  updatedAt        DateTime @updatedAt
+}
+
+model SupportTicket {
+  id        String       @id @default(cuid())
+  userId    String
+  subject   String
+  message   String
+  status    TicketStatus @default(OPEN)
+  response  String?
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@index([status, createdAt])
+}
