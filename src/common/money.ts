@@ -1,10 +1,4 @@
-/**
- * Revenue split for a paid order (proposal section 3.2).
- *
- * Net Revenue = gross - VAT - other mandatory statutory taxes.
- * Net Revenue is shared LEMAT TECHNOLOGY PLC 70% / Ethio Telecom 30% by default.
- * All values are integers in santim (1 ETB = 100 santim).
- */
+
 export interface RevenueRules {
   pricesIncludeVat: boolean;
   vatRate: number;

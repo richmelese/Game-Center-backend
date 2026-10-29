@@ -2,8 +2,10 @@ import { Logger, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import type { NestExpressApplication } from '@nestjs/platform-express';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import cookieParser from 'cookie-parser';
 import helmet from 'helmet';
 import { AppModule } from './app.module';
+import { ADMIN_COOKIE, CUSTOMER_COOKIE } from './auth/auth.constants';
 import { AppConfig } from './config/app-config.service';
 
 async function bootstrap() {
@@ -19,6 +21,7 @@ async function bootstrap() {
   if (config.trustProxyHops > 0) app.set('trust proxy', config.trustProxyHops);
   app.disable('x-powered-by');
   app.useBodyParser('json', { limit: '50kb' });
+  app.use(cookieParser());
   app.use(helmet());
   if (!config.isProduction) {
     // swagger-ui needs inline scripts/styles; relax CSP for its path only
@@ -39,15 +42,16 @@ async function bootstrap() {
       .setTitle('teleGame API')
       .setDescription('Game Center backend for the telebirr SuperApp')
       .setVersion('1.0')
-      .addBearerAuth()
+      .addCookieAuth(CUSTOMER_COOKIE, { type: 'apiKey', in: 'cookie', name: CUSTOMER_COOKIE })
+      .addCookieAuth(ADMIN_COOKIE, { type: 'apiKey', in: 'cookie', name: ADMIN_COOKIE })
       .build();
     SwaggerModule.setup('api/docs', app, SwaggerModule.createDocument(app, doc));
   }
   app.enableCors({
     origin: config.frontendUrl,
-    credentials: false,
+    credentials: true, // the session cookie travels cross-origin (frontend/backend are separate ports/hosts)
     methods: ['GET', 'POST', 'PUT', 'PATCH'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
+    allowedHeaders: ['Content-Type'],
   });
   app.setGlobalPrefix('api');
   app.useGlobalPipes(
@@ -67,11 +71,9 @@ async function bootstrap() {
   if (!config.isProduction) {
     log.log(`API docs on http://localhost:${config.port}/api/docs`);
     const shortcuts = [
-      config.paymentProvider === 'mock' && 'simulated telebirr payments',
       config.payoutProvider === 'mock' && 'simulated payouts',
       config.otpDevEcho &&
         'login codes returned in the API response (OTP_DEV_ECHO)',
-      config.mockTelebirrSso && 'mock telebirr sign-in (MOCK_TELEBIRR_SSO)',
     ].filter(Boolean);
     if (shortcuts.length)
       log.warn(`DEVELOPMENT shortcuts enabled: ${shortcuts.join('; ')}`);

@@ -69,13 +69,6 @@ export class AppConfig {
   get otpDevEcho() {
     return !this.isProduction && this.bool('OTP_DEV_ECHO', false);
   }
-  /**
-   * Development only: accept "mock-<phone>" as a telebirr SuperApp token. This logs in as any
-   * number without proof, so it is off unless explicitly enabled, and never in production.
-   */
-  get mockTelebirrSso() {
-    return !this.isProduction && this.bool('MOCK_TELEBIRR_SSO', false);
-  }
   /** Number of reverse proxies in front of the API (for the client IP used by rate limits). */
   get trustProxyHops() {
     return this.num('TRUST_PROXY_HOPS', 0);
@@ -88,13 +81,9 @@ export class AppConfig {
   assertProductionSafe() {
     if (!this.isProduction) return;
     const problems: string[] = [];
-    if (this.paymentProvider === 'mock')
-      problems.push('PAYMENT_PROVIDER=mock (simulated telebirr)');
     if (this.payoutProvider === 'mock')
       problems.push('PAYOUT_PROVIDER=mock (simulated payouts)');
     if (this.bool('OTP_DEV_ECHO', false)) problems.push('OTP_DEV_ECHO=true');
-    if (this.bool('MOCK_TELEBIRR_SSO', false))
-      problems.push('MOCK_TELEBIRR_SSO=true');
     if (this.config.get<string>('ADMIN_PASSWORD') === 'ChangeMe123!') {
       problems.push('ADMIN_PASSWORD is still the default');
     }
@@ -135,10 +124,9 @@ export class AppConfig {
     };
   }
 
-  get paymentProvider(): 'mock' | 'telebirr' {
-    const p = this.str('PAYMENT_PROVIDER', 'mock');
-    if (p !== 'mock' && p !== 'telebirr')
-      throw new Error('PAYMENT_PROVIDER must be mock or telebirr');
+  get paymentProvider(): 'telebirr' {
+    const p = this.str('PAYMENT_PROVIDER', 'telebirr');
+    if (p !== 'telebirr') throw new Error('PAYMENT_PROVIDER must be telebirr');
     return p;
   }
 
@@ -150,7 +138,8 @@ export class AppConfig {
   }
 
   get telebirr() {
-    const pem = (k: string) => this.str(k).replace(/\\n/g, '\n');
+    const pem = (k: string, fallback?: string) =>
+      this.str(k, fallback).replace(/\\n/g, '\n');
     return {
       baseUrl: this.str('TELEBIRR_BASE_URL'),
       webBaseUrl: this.str('TELEBIRR_WEB_BASE_URL'),
@@ -159,7 +148,8 @@ export class AppConfig {
       merchantAppId: this.str('TELEBIRR_MERCHANT_APP_ID'),
       shortCode: this.str('TELEBIRR_SHORT_CODE'),
       privateKey: pem('TELEBIRR_PRIVATE_KEY'),
-      publicKey: pem('TELEBIRR_PUBLIC_KEY'),
+      // not yet issued by telebirr; only parseNotification() needs it, not checkout
+      publicKey: pem('TELEBIRR_PUBLIC_KEY', ''),
     };
   }
 }

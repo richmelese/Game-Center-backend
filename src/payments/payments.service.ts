@@ -1,11 +1,4 @@
-import {
-  BadRequestException,
-  ForbiddenException,
-  Inject,
-  Injectable,
-  Logger,
-  NotFoundException,
-} from '@nestjs/common';
+import { Inject, Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { OrderStatus, PlanType, Prisma } from '@prisma/client';
 import { randomInt } from 'crypto';
 import { AppConfig } from '../config/app-config.service';
@@ -22,7 +15,7 @@ const PLAN_LABEL: Record<PlanType, string> = {
   DAILY: 'Daily subscription',
   WEEKLY: 'Weekly subscription',
   MONTHLY: 'Monthly subscription',
-  PAY_PER_USE: 'Pay-per-use',
+  PAY_PER_USE: 'Pay per use',
 };
 
 /**
@@ -41,7 +34,7 @@ export class PaymentsService {
     @Inject(PAYMENT_PROVIDER) private readonly provider: PaymentProvider,
   ) {}
 
-  async checkout(userId: string, planId: string) {
+  async checkout(userId: string, planId: string, mode: 'web' | 'inApp') {
     const plan = await this.prisma.plan.findUnique({
       where: { id: planId },
       include: { game: true },
@@ -65,10 +58,12 @@ export class PaymentsService {
     try {
       const result = await this.provider.createCheckout({
         merchOrderId,
-        title: `${plan.game.title} - ${PLAN_LABEL[plan.type]}`,
+        // telebirr rejects biz_content.title containing punctuation like "-" or ":"
+        title: `${plan.game.title} ${PLAN_LABEL[plan.type]}`,
         amountCents: plan.priceCents,
         notifyUrl: `${this.config.publicApiUrl}/api/payments/telebirr/notify`,
         redirectUrl: `${this.config.frontendUrl}/payment/result?order=${merchOrderId}`,
+        mode,
       });
       await this.prisma.order.update({
         where: { id: order.id },
@@ -79,6 +74,7 @@ export class PaymentsService {
         merchOrderId,
         amountCents: plan.priceCents,
         checkoutUrl: result.checkoutUrl,
+        nativeRawRequest: result.nativeRawRequest,
       };
     } catch (err) {
       await this.prisma.order.update({
@@ -91,35 +87,9 @@ export class PaymentsService {
 
   /** telebirr server-to-server notification (notify_url). */
   async handleProviderNotification(body: Record<string, unknown>) {
-    // The simulated provider has no signature, so its notifications are never accepted from
-    // the public callback URL — otherwise anyone could mark any order as paid.
-    if (this.provider.name !== 'telebirr') {
-      throw new ForbiddenException('Payment notifications are not enabled');
-    }
     const notification = this.provider.parseNotification(body);
     await this.fulfil(notification, body);
     return { code: 0, msg: 'success' };
-  }
-
-  /** Development only: the simulated telebirr checkout page confirms or cancels here. */
-  async completeMock(userId: string, merchOrderId: string, success: boolean) {
-    if (this.provider.name !== 'mock')
-      throw new ForbiddenException('Mock payments are disabled');
-    const order = await this.prisma.order.findUnique({
-      where: { merchOrderId },
-    });
-    if (!order || order.userId !== userId)
-      throw new NotFoundException('Order not found');
-    if (success) {
-      const body = { merch_order_id: merchOrderId, trade_status: 'Completed' };
-      await this.fulfil(this.provider.parseNotification(body), body);
-    } else {
-      await this.prisma.order.updateMany({
-        where: { id: order.id, status: OrderStatus.PENDING },
-        data: { status: OrderStatus.CANCELLED },
-      });
-    }
-    return this.getOrder(userId, merchOrderId);
   }
 
   private async fulfil(n: PaymentNotification, raw: Record<string, unknown>) {
@@ -139,13 +109,8 @@ export class PaymentsService {
         });
         return;
       }
-      // a real telebirr confirmation must state the amount paid, and it must match the order
-      const amountMissing =
-        this.provider.name === 'telebirr' && n.amountCents === undefined;
-      if (
-        amountMissing ||
-        (n.amountCents !== undefined && n.amountCents !== order.amountCents)
-      ) {
+      // telebirr's confirmation must state the amount paid, and it must match the order
+      if (n.amountCents === undefined || n.amountCents !== order.amountCents) {
         this.logger.error(
           `Amount mismatch on ${order.merchOrderId}: paid ${n.amountCents}, expected ${order.amountCents}`,
         );
@@ -218,15 +183,5 @@ export class PaymentsService {
       createdAt: o.createdAt,
       paidAt: o.paidAt,
     }));
-  }
-
-  /** For the simulated checkout page: amount and title of an order still awaiting payment. */
-  async pendingCheckoutInfo(userId: string, merchOrderId: string) {
-    const o = await this.getOrder(userId, merchOrderId);
-    if (o.status !== OrderStatus.PENDING)
-      throw new BadRequestException(
-        `Order is already ${o.status.toLowerCase()}`,
-      );
-    return { ...o, title: `${o.game.title} - ${PLAN_LABEL[o.planType]}` };
   }
 }

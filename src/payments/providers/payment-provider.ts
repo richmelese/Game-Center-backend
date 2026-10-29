@@ -5,11 +5,20 @@ export interface CheckoutRequest {
   amountCents: number;
   notifyUrl: string;
   redirectUrl: string;
+  /**
+   * 'web': H5 browser redirect to telebirr's hosted checkout page (trade_type Checkout).
+   * 'inApp': signed payload for the SuperApp's native payment bridge (trade_type InApp) —
+   * used when the customer opened the Game Center from inside the telebirr SuperApp.
+   */
+  mode: 'web' | 'inApp';
 }
 
 export interface CheckoutResult {
-  checkoutUrl: string;
-  prepayId?: string;
+  prepayId: string;
+  /** Set when mode was 'web': browser redirect target. */
+  checkoutUrl?: string;
+  /** Set when mode was 'inApp': hand this to the SuperApp's native pay bridge function. */
+  nativeRawRequest?: string;
 }
 
 export interface PaymentNotification {
@@ -27,7 +36,7 @@ export interface TelebirrIdentity {
 }
 
 export interface PaymentProvider {
-  readonly name: 'mock' | 'telebirr';
+  readonly name: 'telebirr';
   createCheckout(req: CheckoutRequest): Promise<CheckoutResult>;
   /** Validates the provider callback (signature etc.) and normalizes it. Throws when invalid. */
   parseNotification(body: Record<string, unknown>): PaymentNotification;

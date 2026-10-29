@@ -13,6 +13,7 @@ export interface AuthUser {
 /** The parts of the HTTP request the auth layer reads and writes. */
 export interface AuthRequest {
   headers: Record<string, string | string[] | undefined>;
+  cookies?: Record<string, string | undefined>;
   user?: AuthUser;
 }
 

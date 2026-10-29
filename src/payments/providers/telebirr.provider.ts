@@ -105,7 +105,7 @@ export class TelebirrProvider implements PaymentProvider {
       appid: this.cfg.merchantAppId,
       merch_code: this.cfg.shortCode,
       merch_order_id: req.merchOrderId,
-      trade_type: 'Checkout',
+      trade_type: req.mode === 'inApp' ? 'InApp' : 'Checkout',
       title: req.title,
       total_amount: (req.amountCents / 100).toFixed(2),
       trans_currency: 'ETB',
@@ -136,8 +136,18 @@ export class TelebirrProvider implements PaymentProvider {
       timestamp: timestamp(),
     };
     const sign = signPayload(raw, this.cfg.privateKey);
+    const fields = Object.entries(raw).map(([k, v]) => `${k}=${v}`);
+
+    if (req.mode === 'inApp') {
+      // Handed to the SuperApp's native pay bridge as-is — not a URL, so the signature
+      // is not percent-encoded here (unlike the web checkout URL below).
+      return {
+        prepayId,
+        nativeRawRequest: [...fields, `sign=${sign}`, 'sign_type=SHA256WithRSA'].join('&'),
+      };
+    }
     const rawRequest = [
-      ...Object.entries(raw).map(([k, v]) => `${k}=${v}`),
+      ...fields,
       `sign=${encodeURIComponent(sign)}`,
       'sign_type=SHA256WithRSA',
     ].join('&');

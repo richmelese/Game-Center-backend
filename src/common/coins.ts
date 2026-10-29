@@ -1,10 +1,3 @@
-/**
- * Coin rules for journey steps 7 and 8:
- *  - coins are earned from verified active play time in purchased (FULL) sessions only
- *  - capped per session and per day so they cannot be farmed
- *  - converted to ETB at a fixed rate
- * The values are set by admins (CoinSettingsService); .env only provides the first defaults.
- */
 export interface CoinRules {
   /** TIME mode: `coinsPerInterval` coins for every completed `intervalMinutes` of play */
   coinsPerInterval: number;
